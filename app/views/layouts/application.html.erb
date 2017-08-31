@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CommunityIdea</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <%= image_tag "idea.jpg", alt: "Idea community" %>
+          </a>
+          <div class="navbar-burger burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <%= link_to icon("lightbulb-o", "Ideas"), "" , class: "navbar-link is-active" %>
+              <div class="navbar-dropdown ">
+                <%= link_to "Popular", "" , class: "navbar-item"%>
+                <%= link_to "Recent", "" , class: "navbar-item"%>
+                <%= link_to "Newbie", "" , class: "navbar-item"%>
+                <%= link_to "Champion", "" , class: "navbar-item"%>
+                <%= link_to icon("map-marker","Ho Chi Minh"), "" , class: "navbar-item"%>
+                <%= link_to icon("tasks","Projects"), "" , class: "navbar-item"%>
+              </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <%= link_to icon("book", "Category"), "" , class: "navbar-link" %>
+              <div class="navbar-dropdown ">
+                <%= link_to "Technical", "" , class: "navbar-item"%>
+                <%= link_to "Agriculture", "" , class: "navbar-item"%>
+                <%= link_to "Study", "" , class: "navbar-item"%>
+                <%= link_to "Robotic", "" , class: "navbar-item"%>
+                <%= link_to "Entertainment", "" , class: "navbar-item"%>
+                <%= link_to "General", "" , class: "navbar-item"%>
+              </div>
+            </div>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <%= link_to icon("book", "Story"), "" , class: "navbar-link" %>
+              <div class="navbar-dropdown ">
+                <%= link_to "Lastest stories", "" , class: "navbar-item"%>
+                <%= link_to "Popular stories", "" , class: "navbar-item"%>
+                <%= link_to "Inspiring stories", "" , class: "navbar-item"%>
+              </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <%= link_to icon("credit-card-alt", "Investors"), "" , class: "navbar-link" %>
+              <div class="navbar-dropdown ">
+                <%= link_to "Companies", "" , class: "navbar-item"%>
+                <%= link_to "Organization", "" , class: "navbar-item"%>
+                <%= link_to "University", "" , class: "navbar-item"%>
+                <%= link_to "Invidiual", "" , class: "navbar-item"%>
+                <%= link_to "Others", "" , class: "navbar-item"%>
+              </div>
+            </div>
+            <%= link_to "About Us", "" , class: "navbar-item" %>
+          </div>
+          <div class="navbar-end">
+            <%= link_to  "Sign up", "", class: "navbar-item" %>
+            <%= link_to "Sign in", "", class: "navbar-item" %>
+            <div class="navbar-item">
+              <%"= form_tag users_path, :method => 'get' do  "%>
+                <div class="field">
+                  <div class="control has-icons-right">
+                    <%= text_field_tag :search, params[:search],placeholder: "Name of user...", class: "input", id: "provider-remote", autocomplete: "off" %>
+                    <span class="icon is-right is-small">
+                      <%= fa_icon("search") %>
+                    </span>
+                  </div>
+                </div>
+              <%" end "%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <%= flash_messages %>
+    <div>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+  </body>
+</html>

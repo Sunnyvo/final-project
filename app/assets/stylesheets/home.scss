@@ -1,0 +1,133 @@
+
+// .navbar-burger {
+//   &:hover {
+//     background-color: darken($purple, 10%);
+//   }
+//   > span {
+//     background-color: purple;
+//   }
+// }
+
+.navbar-brand .navbar-item {
+  padding: 0;
+  img {
+    max-height: 3rem;
+  }
+}
+
+span.icon {
+  margin-right: 5px;
+}
+
+.add-remove {
+  width: 160px;
+}
+
+.navbar-item .field {
+  .input,
+  .icon {
+    height: 1.8em;
+  }
+}
+
+.background_image {
+    background-color: #bbbbbb;
+    /* Full height */
+
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+body {
+    background: no-repeat center center fixed;
+    color: whitesmoke;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.background_navbar{
+    background-color: black;
+    /* Full height */
+    height: 70px;
+
+//     /* Center and scale the image nicely */
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+}
+
+.footer-like
+{
+  border-bottom: solid   #c8d7dc ;
+  border-top: solid  #c8d7dc  ;
+  border-width: 1px;
+}
+
+.comment{
+  border-bottom: solid   #c8d7dc ;
+  border-top: solid  #c8d7dc  ;
+  border-width: 1px;
+  line-height: 0.8;
+}
+
+.card-hover:hover {
+  background-color: lightgray;
+}
+
+.columns{
+  padding-top :20px;
+}
+
+.menu-color{
+  // -webkit-text-fill-color: purple;
+}
+
+.card-margin{
+  margin: 10px;
+}
+
+.title-padding{
+  padding-left: 10px;
+
+}
+.title-color{
+  color: palevioletred;
+  background-color: whitesmoke;
+}
+
+.post.card{
+  margin-bottom: 1em;
+i.fa{
+  margin-right: 5px;
+
+}
+}
+.button.is-white.is-liked{
+  color: $primary;
+}
+
+.notification.hidden{
+    display: none;
+}
+
+.parent{
+  height: 130px;
+  border: 2px solid #0074d9;
+  color: #0074d9;
+}
+
+.child{
+  color: black;
+  border: 1px dotted #000;
+  background-color: #eee;
+  padding: 20px;
+  color: #000;
+  min-height: 1000px;
+  // position: absolute;
+}

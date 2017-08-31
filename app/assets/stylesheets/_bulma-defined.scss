@@ -1,0 +1,19 @@
+
+
+$color1: #148fce;
+$color2: #14ceb0;
+$color3: #e84a5f;
+$color4: #bbbbbb;
+$color5: #343d46;
+$primaryColor: $color5;
+$linkColor: $color4;
+$navbar-item-active-color: $color2;
+$navbar-background-color: $primaryColor;
+$navbar-item-color: $linkColor;
+$navbar-item-hover-color: $linkColor;
+$navbar-item-hover-background-color: darken($primaryColor, 10%);
+
+$navbar-dropdown-background-color: $primaryColor;
+$navbar-dropdown-item-active-background-color: $primaryColor;
+$navbar-dropdown-item-hover-background-color: darken($primaryColor, 10%);
+$navbar-dropdown-item-hover-color: $linkColor;
