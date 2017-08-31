@@ -66,8 +66,12 @@
             <%= link_to "About Us", "" , class: "navbar-item" %>
           </div>
           <div class="navbar-end">
-            <%= link_to  "Sign up", "", class: "navbar-item" %>
-            <%= link_to "Sign in", "", class: "navbar-item" %>
+          <% if current_user %>
+            <%= link_to "Sign out", destroy_user_session_path, class: "navbar-item" %>
+          <% else %>
+            <%= link_to  "Sign up",new_user_registration_path, class: "navbar-item" %>
+            <%= link_to "Sign in", new_user_session_path, class: "navbar-item" %>
+          <% end %>
             <div class="navbar-item">
               <%"= form_tag users_path, :method => 'get' do  "%>
                 <div class="field">
@@ -84,8 +88,7 @@
         </div>
       </div>
     </nav>
-    <%= flash_messages %>
-    <div>
+    <div style="color:black" >
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </body>

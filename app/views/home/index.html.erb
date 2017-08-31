@@ -2,21 +2,30 @@
   <nav class="parent">
     <h1>Hello Sunny Vo</h1>
   </nav>
-  <div class="columns child is-multiline is-mobile">
+  <div class="columns  is-multiline is-mobile">
     <div class="column is-2">
       First column
     </div>
-    <div class="column">
-      <div class="columns">
-        <div class="column is-two-thirds">
-          second column
-        </div>
-        <div class="column">
-          Third column
-        </div>
+    <div class="column child is-8 has-text-centered">
       <div>
+        Second column
+      </div>
+      <% unless current_user %>
+        <div style="padding:2px">
+          <%= link_to "Create An Account", new_user_registration_path, class: "button is-primary" %>
+        </div>
+        <div style="padding:2px">
+            <%= link_to "Sign in", '', class: "button is-primary" %>
+        </div>
+        <div style="padding:2px">
+          <%= link_to icon("facebook", ""), "/auth/facebook", class: "button is-info", style: "min-width: 60px" %>
+          <%= link_to icon("twitter-square", ""), "/auth/facebook", class: "button is-info", style: "background-color: #00aced;min-width: 60px;" %>
+          <%= link_to icon("google", ""), "/auth/facebook", class: "button is-info", style: "background-color:  #dae3e6;min-width: 60px; color: red; border: 1px solid red;" %>
+        </div>
+      <% end %>
     </div>
-
-
+    <div class="column">
+      Third column
+    </div>
   </div>
 </div>
