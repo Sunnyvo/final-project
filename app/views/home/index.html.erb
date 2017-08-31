@@ -8,7 +8,17 @@
     </div>
     <div class="column child is-8 has-text-centered">
       <div>
-        Second column
+        <div class="field">
+          <label class="label title-padding" style="">Do you have any Idea for our Melon generation?</label>
+          <div class="control new-idea">
+          <%= link_to "Create a new Idea", new_idea_path, class: "button is-primary", style: "" %>
+          </div>
+        </div>
+        <div class="ideas-list">
+          <% @ideas.each do |idea| %>
+            <%= render "ideas/idea", idea: idea %>
+          <% end %>
+        </div>
       </div>
       <% unless current_user %>
         <div style="padding:2px">
@@ -18,9 +28,9 @@
             <%= link_to "Sign in", '', class: "button is-primary" %>
         </div>
         <div style="padding:2px">
-          <%= link_to icon("facebook", ""), "/auth/facebook", class: "button is-info", style: "min-width: 60px" %>
-          <%= link_to icon("twitter-square", ""), "/auth/facebook", class: "button is-info", style: "background-color: #00aced;min-width: 60px;" %>
-          <%= link_to icon("google", ""), "/auth/facebook", class: "button is-info", style: "background-color:  #dae3e6;min-width: 60px; color: red; border: 1px solid red;" %>
+          <%= link_to icon("facebook", ""), user_facebook_omniauth_authorize_path, class: "button is-info", style: "min-width: 60px" %>
+          <%= link_to icon("twitter-square", ""), "/", class: "button is-info", style: "background-color: #00aced;min-width: 60px;" %>
+          <%= link_to icon("google", ""), "", class: "button is-info", style: "background-color:  #dae3e6;min-width: 60px; color: red; border: 1px solid red;" %>
         </div>
       <% end %>
     </div>

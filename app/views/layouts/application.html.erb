@@ -67,7 +67,7 @@
           </div>
           <div class="navbar-end">
           <% if current_user %>
-            <%= link_to "Sign out", destroy_user_session_path, class: "navbar-item" %>
+            <%= link_to "Sign out", destroy_user_session_path, class: "navbar-item", method: :delete %>
           <% else %>
             <%= link_to  "Sign up",new_user_registration_path, class: "navbar-item" %>
             <%= link_to "Sign in", new_user_session_path, class: "navbar-item" %>

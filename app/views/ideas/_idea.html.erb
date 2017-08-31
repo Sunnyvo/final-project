@@ -1,0 +1,13 @@
+<div class="card", id="">
+  <div class="card-content">
+    <div class="media-content">
+      <p class="is-title">
+        <strong><%= link_to idea.user.email,""  %></strong>
+      </p>
+    </div>
+  </div>
+  <div class="content">
+    <%= simple_format idea.body %>
+    <%= image_tag(idea.photo, class: "card-image") %>
+  </div>
+</div>
