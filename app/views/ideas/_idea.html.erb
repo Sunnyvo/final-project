@@ -7,7 +7,11 @@
     </div>
   </div>
   <div class="content">
-    <%= simple_format idea.body %>
-    <%= image_tag(idea.photo, class: "card-image") %>
+    <div class="wrapper">
+      <%= simple_format idea.body %>
+    </div>
+    <div class="wrapper">
+      <%= image_tag(idea.photo, class: "card-image ") %>
+    </div>
   </div>
 </div>
