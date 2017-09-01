@@ -6,19 +6,7 @@
     <div class="column is-2">
       First column
     </div>
-    <div class="column child is-8 has-text-centered is-centered " >
-      <div class="">
-        <label class="label title-padding" style="">Do you have any Idea for your Melon generation?</label>
-        <div class="control new-idea" style="vertical-align: middle;">
-          <a class="button is-primary is-large modal-button wrapper js-modal-button" data-target="modal" style="margin:5px" >Create a new Idea</a>
-          <%= render "ideas/new", idea: @idea %>
-        </div>
-      <div>
-      <div class="ideas-list">
-        <% @ideas.each do |idea| %>
-          <%= render "ideas/idea", idea: idea %>
-        <% end %>
-      </div>
+    <div class="column child is-8 is-centered " >
       <% unless current_user %>
         <div style="padding:2px">
           <%= link_to "Create An Account", new_user_registration_path, class: "button is-primary" %>
@@ -30,6 +18,20 @@
           <%= link_to icon("facebook", ""), user_facebook_omniauth_authorize_path, class: "button is-info", style: "min-width: 60px" %>
           <%= link_to icon("twitter-square", ""), "/", class: "button is-info", style: "background-color: #00aced;min-width: 60px;" %>
           <%= link_to icon("google", ""), "", class: "button is-info", style: "background-color:  #dae3e6;min-width: 60px; color: red; border: 1px solid red;" %>
+        </div>
+      <% else %>
+        <div class="">
+          <label class="label title-padding" style="">Do you have any Idea for your Melon generation?</label>
+          <div class="control new-idea" style="vertical-align: middle;">
+            <a class="button is-primary is-large modal-button wrapper js-modal-button" data-target="modal" style="margin:5px" >Create a new Idea</a>
+            <%= render "ideas/new", idea: @idea %>
+          </div>
+        <div>
+
+        <div class="ideas-list">
+          <% @ideas.each do |idea| %>
+            <%= render "ideas/idea", idea: idea %>
+          <% end %>
         </div>
       <% end %>
     </div>
