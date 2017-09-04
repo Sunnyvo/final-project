@@ -1,9 +1,17 @@
 <div class="card", id="">
   <div class="card-content">
-    <div class="media-content">
-      <p class="is-title">
-        <strong><%= link_to idea.user.email,""  %></strong>
-      </p>
+    <div class="media">
+      <div class="media-left">
+        <p class="image is-32x32">
+          <%= image_tag(idea.user.image_url_or_default, class: "card-image") %>
+        </p>
+      </div>
+      <div class="media-content">
+        <p class="is-title">
+          <strong><%= link_to idea.user.email,""  %></strong>
+        </p>
+        <small><%= time_ago_in_words idea.updated_at %> ago</small>
+      </div>
     </div>
   </div>
   <div class="content">
@@ -14,7 +22,7 @@
       <%= simple_format idea.body %>
     </div>
     <div class="wrapper">
-      <%= image_tag(idea.photo, class: "card-image ") %>
+      <%= image_tag(idea.photo.url, class: "card-image ") %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :ideas, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  mount_uploader :avatar, AvatarUploader
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -16,6 +16,10 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  def image_url_or_default
+    avatar.url|| image_url.presence || "mellon.jpg"
   end
 
   def self.new_with_session(params, session)
