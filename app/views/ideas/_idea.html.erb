@@ -10,7 +10,7 @@
         <p class="is-title">
           <strong><%= link_to idea.user.email,""  %></strong>
         </p>
-        <small><%= time_ago_in_words idea.updated_at %> ago</small>
+        <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>
       </div>
     </div>
   </div>
@@ -21,8 +21,10 @@
     <div class="">
       <%= simple_format idea.body %>
     </div>
+    <% if idea.photo.url %>
     <div class="wrapper">
       <%= image_tag(idea.photo.url, class: "card-image ") %>
     </div>
+    <% end %>
   </div>
 </div>

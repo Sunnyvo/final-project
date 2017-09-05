@@ -25,16 +25,17 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = current_user.ideas.build idea_params
-
-    respond_to do |format|
-      if @idea.save
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
-        format.json { render :show, status: :created, location: @idea }
-      else
-        format.html { render :new }
-        format.json { render json: @idea.errors, status: :unprocessable_entity }
-      end
+    respond_to do |f|
+      f.html{ redirect_back(fallback_location: root_path) }
+      f.js { render 'idea' }
     end
+    unless @idea.save
+      # format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+      # format.json { render :show, status: :created, location: @idea }
+      # format.html { render :new }
+      # format.json { render json: @idea.errors, status: :unprocessable_entity }
+    end
+
   end
 
   # PATCH/PUT /ideas/1
