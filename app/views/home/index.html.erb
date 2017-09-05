@@ -21,12 +21,11 @@
         </div>
       <% else %>
         <div class="">
-          <label class="label title-padding" style="">Do you have any Idea for your Melon generation?</label>
           <div class="control new-idea" style="vertical-align: middle;">
-            <a class="button is-primary is-large modal-button wrapper js-modal-button" data-target="modal" style="margin:5px" >Create a new Idea</a>
+            <a class="button is-primary is-large modal-button wrapper js-modal-button" data-target="modal" style="margin:5px; margin-left:130px;margin-right:130px;" >Create a new Idea</a>
             <%= render "ideas/new", idea: @idea %>
           </div>
-        <div>
+        </div>
         <div class="ideas-list">
           <% @ideas.each do |idea| %>
             <%= render "ideas/idea", idea: idea %>

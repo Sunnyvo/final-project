@@ -1,0 +1,24 @@
+ <aside class="profile-card friend", id="<%= dom_id another_user %>">
+  <header>
+    <%= link_to profile_path(id: user) do %>
+      <%= image_tag user.image_url_or_default%>
+    <% end %>
+    <h1 class="title is-4"><%= user.name %></h1>
+    <h2 class="subtitle is-6"><%= user.email %></h2>
+  </header>
+  <div class="profile-bio">
+    <p> Followed by: <%= User.num_followedby(user)%></p>
+  <footer class="card-footer">
+          <a class="card-footer-item js-remove <%= current_user.is_followed?(user) ? " " : "hidden" %>">
+            <%= form_for user, url: remove_friend_path(user_id: user.id), method: :delete, remote: true do |f| %>
+              <button class="button is-danger add-remove is-inverted"><%= icon("user-times", "Remove Friend") %></button>
+            <% end %>
+          </a>
+          <a class="card-footer-item js-add <%= current_user.is_followed?(user) ? "hidden" : " " %>">
+            <%= form_for current_user.follows.build(friend: another_user), remote: true do |f| %>
+              <%= f.hidden_field :friend_id %>
+              <button class="button is-primary  is-inverted "><%= icon("user-plus", "Add Friend") %></button>
+            <% end %>
+          </a>
+  </footer>
+</aside>

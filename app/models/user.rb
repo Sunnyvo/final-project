@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def image_url_or_default
-    avatar.url|| image_url.presence || "mellon.jpg"
+    avatar.url|| image_url.presence || "idea.jpg"
   end
 
   def self.new_with_session(params, session)

@@ -90,6 +90,8 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
+    dropzonejs-rails (0.8.1)
+      rails (> 3.1)
     erubi (1.6.1)
     execjs (2.7.0)
     faker (1.8.4)
@@ -282,6 +284,7 @@ DEPENDENCIES
   carrierwave-aws
   devise
   dotenv-rails
+  dropzonejs-rails
   faker
   font-awesome-rails
   http

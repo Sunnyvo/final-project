@@ -1,30 +1,32 @@
-<div class="card", id="">
+<div class="card ", id="", style="margin-top:20px;border-radius: 10px;min-height:300px">
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-        <p class="image is-32x32">
-          <%= image_tag(idea.user.image_url_or_default, class: "card-image") %>
-        </p>
+        <figure class="image is-48x48">
+          <%= image_tag(idea.user.image_url_or_default, alt: "image") %>
+        </figure>
       </div>
       <div class="media-content">
-        <p class="is-title">
-          <strong><%= link_to idea.user.email,""  %></strong>
+        <p class="title is-4">
+          <%= link_to idea.user.email,""  %>
         </p>
-        <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>
+        <p class="subtitle is-6">
+          <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>
+        </p>
       </div>
     </div>
-  </div>
-  <div class="content">
-    <div class="card-title">
-      <%= simple_format idea.title %>
+    <div class="content">
+      <div class="card-title wrapper">
+        <strong>  <%= simple_format idea.title %> </strong>
+      </div>
+      <div class="">
+        <%= simple_format idea.body %>
+      </div>
+      <% if idea.photo.url %>
+      <div class="wrapper">
+        <%= image_tag(idea.photo.url, class: "card-image ") %>
+      </div>
+      <% end %>
     </div>
-    <div class="">
-      <%= simple_format idea.body %>
-    </div>
-    <% if idea.photo.url %>
-    <div class="wrapper">
-      <%= image_tag(idea.photo.url, class: "card-image ") %>
-    </div>
-    <% end %>
   </div>
 </div>
