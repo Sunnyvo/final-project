@@ -1,0 +1,2 @@
+module IdeaAttachmentsHelper
+end

@@ -3,18 +3,23 @@
 
   <div class="modal-content" style="color:black; background-color:#bbbbbb">
     <h1 style="text-align: center; ">New Idea</h1>
-    <%= form_for @idea, remote: true do |f| %>
+    <%= form_for @idea, html: { multipart: true } , remote: true do |f| %>
       <div class="control">
         Title:
         <%= f.text_field :title, class: "form-control input"%>
         Something about your new idea:
         <%= f.text_area :body, class: "form-control textarea", placeholder: "We love your Idea..." %>
+        <%= f.fields_for :idea_attachments do |p| %>
+          <%= p.label :photo %><br>
+          <%= p.file_field :photo,:multiple => true, name: "idea_attachments[photo][]" %>
+        <% end %>
+
         <div class="control", style="padding:5px">
           <div class="level">
             <div class="level-left">
               <div class="file">
                 <label class="file-label ">
-                  <%= f.file_field :photo, class: "file-input dropzone" %>
+                  <%= f.file_field :photo, class: "file-input" %>
                   <span class="file-cta">
                     <%= icon("camera-retro", "Photo") %>
                   </span>

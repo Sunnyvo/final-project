@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904132949) do
+ActiveRecord::Schema.define(version: 20170905121149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20170904132949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "idea_attachments", force: :cascade do |t|
+    t.bigint "idea_id"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idea_id"], name: "index_idea_attachments_on_idea_id"
   end
 
   create_table "ideas", force: :cascade do |t|
@@ -60,5 +68,6 @@ ActiveRecord::Schema.define(version: 20170904132949) do
   end
 
   add_foreign_key "follows", "users"
+  add_foreign_key "idea_attachments", "ideas"
   add_foreign_key "ideas", "users"
 end

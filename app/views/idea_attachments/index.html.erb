@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Idea Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Idea</th>
+      <th>Photo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @idea_attachments.each do |idea_attachment| %>
+      <tr>
+        <td><%= idea_attachment.idea %></td>
+        <td><%= idea_attachment.photo %></td>
+        <td><%= link_to 'Show', idea_attachment %></td>
+        <td><%= link_to 'Edit', edit_idea_attachment_path(idea_attachment) %></td>
+        <td><%= link_to 'Destroy', idea_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Idea Attachment', new_idea_attachment_path %>

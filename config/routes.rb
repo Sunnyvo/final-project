@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :idea_attachments
   resources :ideas
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "profile" => "users#show"

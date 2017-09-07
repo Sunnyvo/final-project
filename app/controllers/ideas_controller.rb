@@ -15,6 +15,7 @@ class IdeasController < ApplicationController
   # GET /ideas/new
   def new
     @idea = Idea.new
+    @idea_attachment = @idea.idea_attachments.build
   end
 
   # GET /ideas/1/edit
@@ -24,12 +25,25 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
+    puts "photo:"
+    puts params[:photo]
+    puts "idea:"
+    puts params[:idea_attachments]
+    puts "content:"
     @idea = current_user.ideas.build idea_params
+
     respond_to do |f|
       f.html{ redirect_back(fallback_location: root_path) }
       f.js { render 'idea' }
     end
-    unless @idea.save
+    if @idea.save
+      if params[:idea_attachments]
+        params[:idea_attachments][:photo].each do |a|
+          @idea_attachment = @idea.idea_attachments.create!(photo: a)
+        end
+      end
+    else
+      puts "help!"
       # format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
       # format.json { render :show, status: :created, location: @idea }
       # format.html { render :new }
@@ -70,6 +84,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :body, :photo)
+      params.require(:idea).permit(:title, :body, :photo,idea_attachments_attributes: [:id, :idea_id, :photo])
     end
 end

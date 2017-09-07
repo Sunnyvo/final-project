@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Idea:</strong>
+  <%= @idea_attachment.idea %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @idea_attachment.photo %>
+</p>
+
+<%= link_to 'Edit', edit_idea_attachment_path(@idea_attachment) %> |
+<%= link_to 'Back', idea_attachments_path %>
