@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905121149) do
+ActiveRecord::Schema.define(version: 20170908124240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer "friend_id"
@@ -37,7 +43,17 @@ ActiveRecord::Schema.define(version: 20170905121149) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "type_id"
+    t.index ["category_id"], name: "index_ideas_on_category_id"
+    t.index ["type_id"], name: "index_ideas_on_type_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,5 +84,7 @@ ActiveRecord::Schema.define(version: 20170905121149) do
 
   add_foreign_key "follows", "users"
   add_foreign_key "idea_attachments", "ideas"
+  add_foreign_key "ideas", "categories"
+  add_foreign_key "ideas", "types"
   add_foreign_key "ideas", "users"
 end

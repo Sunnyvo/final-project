@@ -13,8 +13,8 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      # user.name = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
+      user.name = auth.info.name   # assuming the user model has a name
+      user.image_url = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
@@ -30,6 +30,18 @@ class User < ApplicationRecord
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
+    end
+  end
+  def self.generate_users(n = 5, gender = "female")
+    url = "https://randomuser.me/api?results=#{n}&gender=#{gender}"
+    body = HTTP.get(url).parse
+    body["results"].each do |person|
+      hash = {}
+      hash[:name] = person["name"]["first"] + " " + person["name"]["last"]
+      hash[:email] = person["email"]
+      hash[:password] = person["login"]["password"]
+      hash[:image_url] = person["picture"]["large"]
+      User.create! hash
     end
   end
 end

@@ -41,6 +41,7 @@
                       <option>Others</option>
                     </select>
                   </div>
+                    <%= f.select(:category, Category.all, :id, :name) %>
                 </div>
               </div>
             </div>
