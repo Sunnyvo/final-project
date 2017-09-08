@@ -3,14 +3,42 @@
 
     <div class="card-header">
       <div class="card-header-title wrapper" style="padding-bottom:1px">
-        <strong>  <%= simple_format idea.title %> </strong>
+        <h3><strong>  <%= simple_format idea.title %> </strong></h3>
       </div>
     </div>
-    <div class="card-content"  style="padding-top: 75%;">
-      <div class="content"  >
-        <div class="body">
+    <div class="card-content"  style="min-height:469px;">
+      <div class="content" >
+        <div class="body" style="border: 1px solid #bbbbbb;min-height:200px;border-radius: 10px;">
           <%= simple_format idea.body %>
         </div>
+      </div>
+      <div class="content">
+        <strong> Category: </strong>
+        Technical
+      </div>
+      <div class="content">
+       <strong> In need: </strong>
+        a leader, an embedded programming
+      </div>
+      <div class="content">
+        <strong>14 people</strong>
+        want to join this idea
+      </div>
+      <div class="content">
+        <nav class="level">
+          <div class="level-left">
+          </div>
+          <div class="level-right">
+            <div class="level-item" style="margin-right:50px">
+              <div class="">
+                <div class="control new-join" style="vertical-align: middle;">
+                  <a class="button is-primary modal-join js-modal-join" data-target="modal-join" >Join</a>
+                  <%#= render "joins/new", idea: @idea %>
+                </div>
+              </div>
+            <div>
+          </div>
+        </nav>
       </div>
     </div>
     <div class="card-image">
