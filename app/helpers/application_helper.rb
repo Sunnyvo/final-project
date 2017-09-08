@@ -12,5 +12,8 @@ module ApplicationHelper
     end.join.html_safe
   end
 
+  def class_for flash_type
+    { success: 'is-primary', error: 'is-danger', notice: 'is-warning'}[flash_type.to_sym]
+  end
 
 end

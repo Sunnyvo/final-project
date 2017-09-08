@@ -26,19 +26,20 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = current_user.ideas.build idea_params
-
-    respond_to do |f|
-      f.html{ redirect_back(fallback_location: root_path) }
-      f.js { render 'idea' }
-    end
     if @idea.save
       if params[:idea_attachments]
         params[:idea_attachments][:photo].each do |a|
           @idea_attachment = @idea.idea_attachments.create!(photo: a)
         end
       end
+
+      respond_to do |f|
+        f.html{ redirect_back(fallback_location: root_path) }
+        f.js { render 'idea' }
+      end
+
     else
-      puts "help!"
+      flash[:error] = "Error: #{@comment.errors.full_messages.to_sentence}"
       # format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
       # format.json { render :show, status: :created, location: @idea }
       # format.html { render :new }

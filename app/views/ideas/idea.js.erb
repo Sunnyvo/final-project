@@ -1,1 +1,6 @@
 
+$(".modal").find(".body-textarea").val("");
+$(".modal").find(".title-input").val("");
+$(".modal").find(".file-input").val("");
+$($(".card-show-idea")[0]).find(".image-idea img").attr("src","<%= @idea.idea_attachments.last.photo.url %>")
+

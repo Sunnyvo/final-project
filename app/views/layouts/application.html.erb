@@ -89,6 +89,7 @@
         </div>
       </div>
     </nav>
+     <%= flash_messages %>
     <div style="color:black" >
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
