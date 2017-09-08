@@ -1,3 +1,43 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.image-round img{
+  border-radius: 50%;
+  margin: 2px auto;
+  display: block;
+  width: 200px;
+  border: 2px solid #fff;
+
+};
+.content-new{
+  color:black;
+  background-color:#bbbbbb;
+  border-radius: 10px;
+}
+.card-show-idea{
+  margin-top:20px;
+  margin-left:150px;
+  margin-right:150px;
+  .js-idea{
+    border-radius: 10px;
+  };
+}
+.image-idea img{
+  padding: 10px;
+}
+
+.js-idea:hover {
+  .image-idea{
+  display: none;
+  }
+  .card-content{
+    display: block;
+  }
+
+}
+
+.js-idea {
+  .card-content{
+    display: none;
+  }
+}

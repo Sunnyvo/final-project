@@ -1,32 +1,60 @@
-<div class="card ", id="", style="margin-top:20px;border-radius: 10px;min-height:300px">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <%= image_tag(idea.user.image_url_or_default, alt: "image") %>
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">
-          <%= link_to idea.user.email,""  %>
-        </p>
-        <p class="subtitle is-6">
-          <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>
-        </p>
-      </div>
-    </div>
-    <div class="content">
-      <div class="card-title wrapper">
+<div class="card-show-idea">
+  <div class="card js-idea" id="" >
+
+    <div class="card-header">
+      <div class="card-header-title wrapper" style="padding-bottom:1px">
         <strong>  <%= simple_format idea.title %> </strong>
       </div>
-      <div class="">
-        <%= simple_format idea.body %>
+    </div>
+    <div class="card-content"  style="padding-top: 75%;">
+      <div class="content"  >
+        <div class="body">
+          <%= simple_format idea.body %>
+        </div>
       </div>
-      <% if idea.photo.url %>
-      <div class="wrapper">
-        <%= image_tag(idea.photo.url, class: "card-image ") %>
-      </div>
-      <% end %>
+    </div>
+    <div class="card-image">
+      <figure class="image image-idea is-4by3">
+        <% if idea.idea_attachments.first %>
+          <%= image_tag(idea.idea_attachments.first.photo.url, class: "card-image ") %>
+        <% else %>
+          <%= image_tag("idea.jpg", class: "card-image")%>
+        <% end %>
+      </figure>
+    </div>
+    <footer>
+      <nav class="level" style="margin-right:10px">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            <%= icon("eye-slash", "1000") %>
+          </div>
+          <div class="level-item">
+            <%= icon("comments", "22") %>
+          </div>
+          <div class="level-item">
+            <%#= link_to icon("heart-o","25"), toggle_like_path(idea_id: idea.id),
+            class: "button is-white js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
+            <%= link_to icon("heart-o","102") %>
+          </div>
+        </div>
+      </nav>
+    </footer>
+  </div>
+  <div class="media">
+    <div class="media-left">
+      <figure class="image image-round is-64x64">
+        <%= image_tag(idea.user.image_url_or_default, alt: "image") %>
+      </figure>
+    </div>
+    <div class="media-content">
+      <p class="title is-4">
+        <%= link_to idea.user.email,""  %>
+      </p>
+      <p class="subtitle is-6">
+        <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>
+      </p>
     </div>
   </div>
 </div>

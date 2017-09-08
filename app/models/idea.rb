@@ -3,8 +3,6 @@ class Idea < ApplicationRecord
   has_many :idea_attachments
   accepts_nested_attributes_for :idea_attachments
 
-  mount_uploader :photo, PhotoUploader
-
   def idea_updated_at
     updated_at|| Time.new()
   end

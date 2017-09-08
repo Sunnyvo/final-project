@@ -3,11 +3,9 @@
 one:
   title: MyString
   body: MyText
-  photo: MyString
   user: one
 
 two:
   title: MyString
   body: MyText
-  photo: MyString
   user: two

@@ -25,11 +25,6 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
-    puts "photo:"
-    puts params[:photo]
-    puts "idea:"
-    puts params[:idea_attachments]
-    puts "content:"
     @idea = current_user.ideas.build idea_params
 
     respond_to do |f|
@@ -84,6 +79,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :body, :photo,idea_attachments_attributes: [:id, :idea_id, :photo])
+      params.require(:idea).permit(:title, :body,idea_attachments_attributes: [:id, :idea_id, :photo])
     end
 end
