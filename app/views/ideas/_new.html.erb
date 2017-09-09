@@ -13,11 +13,7 @@
         <div class="field">
           <div class="control">
             <div class="select">
-              <select>
-                <option>Funny Idea</option>
-                <option>Real Idea</option>
-                <option>Project</option>
-              </select>
+              <%= f.select :type,options_from_collection_for_select(Type.all, :id, :name) %>
             </div>
           </div>
         </div>
@@ -34,14 +30,9 @@
               <div class="field">
                 <div class="control">
                   <div class="select">
-                    <select>
-                      <option>Technical</option>
-                      <option>Learning</option>
-                      <option>Agriculture</option>
-                      <option>Others</option>
-                    </select>
+                    <%= f.select :category,options_from_collection_for_select(Category.all, :id, :name) %>
                   </div>
-                    <%= f.select(:category, Category.all, :id, :name) %>
+
                 </div>
               </div>
             </div>

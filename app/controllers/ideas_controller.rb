@@ -39,7 +39,7 @@ class IdeasController < ApplicationController
       end
 
     else
-      flash[:error] = "Error: #{@comment.errors.full_messages.to_sentence}"
+      flash[:error] = "Error: #{@idea.errors.full_messages.to_sentence}"
       # format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
       # format.json { render :show, status: :created, location: @idea }
       # format.html { render :new }
@@ -80,6 +80,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :body,idea_attachments_attributes: [:id, :idea_id, :photo])
+      params.require(:idea).permit(:title, :body,:category,:type,idea_attachments_attributes: [:id, :idea_id, :photo])
     end
 end

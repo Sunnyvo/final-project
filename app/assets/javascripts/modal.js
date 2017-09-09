@@ -7,6 +7,7 @@ $(document).on("turbolinks:load",()=> {
     $(".modal").toggleClass('is-active');
     var title = $(".modal").find(".title-input").val();
     var body = $(".modal").find(".body-textarea").val();
+    var category = $(".modal").find(".body-textarea").val();
     var cloned = $($(".card-show-idea")[0]).clone();
     cloned.find(".card-title strong p").text(title);
     cloned.find(".body p").text(body);
