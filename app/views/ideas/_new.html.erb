@@ -13,7 +13,7 @@
         <div class="field">
           <div class="control">
             <div class="select">
-              <%= f.select :type,options_from_collection_for_select(Type.all, :id, :name) %>
+              <%= f.select :type_id,options_from_collection_for_select(Type.all, :id, :name) %>
             </div>
           </div>
         </div>
@@ -30,26 +30,10 @@
               <div class="field">
                 <div class="control">
                   <div class="select">
-                    <%= f.select :category,options_from_collection_for_select(Category.all, :id, :name) %>
+                    <%= f.select :category_id,options_from_collection_for_select(Category.all, :id, :name) %>
                   </div>
 
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="control" style="margin-top:20px">
-          <div class="level">
-            <div class="level-left">
-              <label class="label" style="margin-left:10px"> hashtag: </label>
-            </div>
-            <div class="" style="margin-left:10px;">
-              <%= f.text_field :title, class: "form-control input hashtag-input"%>
-              <%#= f.text_field :hashtag, class: "form-control input hashtag-input"%>
-            </div>
-            <div class="" style="margin-right:35px;">
-              <div class="control" style="padding:5px">
-                <div class="button is-primary js-add-mention"> Add </div>
               </div>
             </div>
           </div>
