@@ -7,7 +7,7 @@ header img {
 }
 
 
-aside.friend {
+aside.css-profile {
   border-top: 0px solid #26A69A;
   border-bottom: 0px solid #00695C;
   border-radius: 50%;
@@ -22,7 +22,7 @@ aside.friend {
   transition: all ease 0.3s;
 }
 
-aside.friend:hover {
+aside.css-profile:hover {
   border-top: 4px solid #26A69A;
   border-bottom: 4px solid #00695C;
   border-radius: 5px;
@@ -31,7 +31,7 @@ aside.friend:hover {
   box-shadow: 0 0 70px 10px #fff;
 }
 
-aside.friend :hover header img {
+aside.css-profile :hover header img {
   animation: profile_image 2000ms linear both;
   animation-delay: 0.5s;
 }
@@ -54,7 +54,7 @@ header h1 {
   border-bottom: 1px solid #fff;
 }
 
-aside.friend:hover header h1 {
+aside.css-profile:hover header h1 {
   margin-top: 0px;
   outline: 0 solid #fff;
   border-top: 0px solid #fff;
@@ -81,7 +81,7 @@ header h2 {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 49%, rgba(0, 0, 0, 0.61) 100%);
 }
 
-aside.friend:hover .profile-bio {
+aside.css-profile:hover .profile-bio {
   opacity: 1;
 }
 
@@ -99,7 +99,7 @@ aside.friend:hover .profile-bio {
   transition: all ease 0.5s;
 }
 
-aside.friend:hover .profile-social-links {
+aside.css-profile:hover .profile-social-links {
   margin-left: -30px;
   opacity: 1;
 }
@@ -194,7 +194,7 @@ aside.friend:hover .profile-social-links {
 }
 /*NAME ANIMATE */
 
-aside.friend:hover header h1 {
+aside.css-profile:hover header h1 {
   animation: name_and_job 1500ms linear both;
   animation-delay: 0.4s;
 }
@@ -259,17 +259,17 @@ aside.friend:hover header h1 {
   }
 }
 
-aside.friend :hover ul li:first-child {
+aside.css-profile :hover ul li:first-child {
   animation: social_animation 2000ms ease-in-out both;
   animation-delay: 0.75s;
 }
 
-aside.friend:hover ul li:nth-child(2) {
+aside.css-profile:hover ul li:nth-child(2) {
   animation: social_animation 2000ms ease-in-out both;
   animation-delay: 1s;
 }
 
-aside.friend:hover ul li:nth-child(3) {
+aside.css-profile:hover ul li:nth-child(3) {
   animation: social_animation 2000ms ease-in-out both;
   animation-delay: 1.25s;
 }

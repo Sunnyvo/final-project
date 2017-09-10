@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   resources :idea_attachments
+
   resources :ideas
+
+  resources :follows
+  delete "unfollow" => "follows#destroy"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "profile" => "users#show"
-
-  # Connecting facebook
-
+  get "profile"   => "users#profile"
 
   #home page
   root "home#index"
+  get "text" => "home#text"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

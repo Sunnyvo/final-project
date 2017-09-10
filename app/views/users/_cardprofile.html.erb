@@ -1,0 +1,35 @@
+<div class="container-card" id="<%=dom_id user%>">
+  <div class="card">
+    <div class="card-title">
+      <div class="icon-idea">
+        <a> <%= icon("lightbulb-o","") %> </a>
+      </div>
+      <div class="card-image">
+        <figure class="image is-64x64">
+          <%= image_tag(user.image_url_or_default, alt: "image") %>
+        </figure>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="content">
+        <h5>
+          <%= user.name %>
+        </h5>
+        <p> Followed by: <%= User.num_followedby(user)%></p>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a class="card-footer-item js-unfollow <%= current_user.is_followed?(user) ? " " : "hidden" %>">
+        <%= form_for user, url: unfollow_path(user_id: user.id), method: :delete, remote: true do |f| %>
+          <button class="button is-danger add-remove is-inverted"><%= icon("user-times", "Unfollow") %></button>
+        <% end %>
+      </a>
+      <a class="card-footer-item js-follow <%= current_user.is_followed?(user) ? "hidden" : " " %>">
+        <%= form_for current_user.follows.build(follower: user), remote: true do |f| %>
+          <%= f.hidden_field :follower_id %>
+          <button class="button is-primary  is-inverted "><%= icon("user-plus", "Follow") %></button>
+        <% end %>
+      </a>
+    </footer>
+  </div>
+</div>

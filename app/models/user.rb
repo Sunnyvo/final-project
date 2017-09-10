@@ -44,4 +44,10 @@ class User < ApplicationRecord
       User.create! hash
     end
   end
+  def self.num_followedby(user)
+    user.follows.count
+  end
+  def is_followed?(user)
+    followers.include?(user)
+  end
 end
