@@ -4,6 +4,9 @@ class Idea < ApplicationRecord
   accepts_nested_attributes_for :idea_attachments
   belongs_to :category
   belongs_to :type
+  has_many :participates, dependent: :destroy
+  has_many :joiners, through: :participates
+
   has_and_belongs_to_many :hashtags
 
   after_create do

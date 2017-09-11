@@ -13,12 +13,10 @@
     <div class="card-content">
       <div class="content">
         <h5>
-          <%= user.name %>
+          <%= user.name_or_email %>
         </h5>
         <p> Followed by: <%= User.num_followedby(user)%></p>
       </div>
-    </div>
-    <footer class="card-footer">
       <a class="card-footer-item js-unfollow <%= current_user.is_followed?(user) ? " " : "hidden" %>">
         <%= form_for user, url: unfollow_path(user_id: user.id), method: :delete, remote: true do |f| %>
           <button class="button is-danger add-remove is-inverted"><%= icon("user-times", "Unfollow") %></button>
@@ -30,6 +28,23 @@
           <button class="button is-primary  is-inverted "><%= icon("user-plus", "Follow") %></button>
         <% end %>
       </a>
+    </div>
+    <footer class="card-footer">
+      <nav class="level" style="margin-right:10px">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            <%= icon("paw", "122") %>
+          </div>
+          <div class="level-item">
+            <%= icon("lightbulb-o", "2") %>
+          </div>
+          <div class="level-item">
+            <%= icon("plus-circle","102") %>
+          </div>
+        </div>
+      </nav>
     </footer>
   </div>
 </div>

@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows
-
+  has_many :participates
   mount_uploader :avatar, AvatarUploader
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -32,6 +32,7 @@ class User < ApplicationRecord
       end
     end
   end
+
   def self.generate_users(n = 5, gender = "female")
     url = "https://randomuser.me/api?results=#{n}&gender=#{gender}"
     body = HTTP.get(url).parse
@@ -44,10 +45,16 @@ class User < ApplicationRecord
       User.create! hash
     end
   end
+
   def self.num_followedby(user)
     user.follows.count
   end
+
   def is_followed?(user)
     followers.include?(user)
+  end
+
+  def name_or_email
+    name || email
   end
 end
