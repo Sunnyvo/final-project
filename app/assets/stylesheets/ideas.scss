@@ -1,6 +1,4 @@
-// Place all the styles related to the Ideas controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 .image-round img{
   border-radius: 50%;
   margin: 2px auto;
@@ -40,4 +38,19 @@
   .card-content{
     display: none;
   }
+}
+
+
+.idea-info{
+  min-height:280px;
+  background-color:white;
+  border: 1px solid #343d46;
+  border-radius: 15px;
+}
+
+.idea-attachment{
+  min-height:280px;
+  background-color:white;
+  border: 1px solid #343d46;
+  border-radius: 15px;
 }

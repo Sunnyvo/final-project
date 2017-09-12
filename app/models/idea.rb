@@ -5,8 +5,8 @@ class Idea < ApplicationRecord
   belongs_to :category
   belongs_to :type
   has_many :participates, dependent: :destroy
-  has_many :joiners, through: :participates
-
+  has_many :joiners, through: :participates, source: "joiner"
+  has_many :reaches
   has_and_belongs_to_many :hashtags
 
   after_create do

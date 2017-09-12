@@ -1,9 +1,9 @@
 <% if @idea.idea_attachments.first %>
   $($(".card-show-idea")[0]).find(".image-idea img").attr("src","<%= @idea.idea_attachments.last.photo.url %>")
 <% end %>
-$(".modal").find(".body-textarea").val("");
-$(".modal").find(".title-input").val("");
-$(".modal").find(".need-input").val("");
-$(".modal").find("#idea_category_id").val("1");
-$(".modal").find("#idea_type_id").val("1");
-$(".modal").find(".file-input").val("");
+$(".js-modal-new-idea").find(".body-textarea").val("");
+$(".js-modal-new-idea").find(".title-input").val("");
+$(".js-modal-new-idea").find(".need-input").val("");
+$(".js-modal-new-idea").find("#idea_category_id").val("1");
+$(".js-modal-new-idea").find("#idea_type_id").val("1");
+$(".js-modal-new-idea").find(".file-input").val("");

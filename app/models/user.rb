@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows
   has_many :participates
+  # has_many :joined_ideas, through: :participates, source: 'idea'
+  has_many :joined_ideas, through: :participates, source: 'joined_idea'
+  has_many :reaches
   mount_uploader :avatar, AvatarUploader
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

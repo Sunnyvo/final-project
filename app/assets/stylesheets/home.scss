@@ -88,17 +88,16 @@ body {
 }
 
 .parent{
-  height: 60px;
-  border: 2px solid #0074d9;
+  height: 130px;
+  border: 1px solid #343d46;;
   color: #0074d9;
 }
 
 .child{
-  color: black;
-  border: 1px dotted #000;
+  border: 1px solid;
+  border-radius: 10px;
   background-color: #eee;
   padding: 20px;
-  color: #000;
   min-height: 1000px;
   // position: absolute;
 }

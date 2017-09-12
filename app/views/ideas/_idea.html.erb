@@ -1,5 +1,5 @@
-<div class="card-show-idea">
-  <div class="card js-idea" id="" >
+<div class="card-show-idea" id="<%= dom_id idea %>">
+  <div class="card js-idea">
 
     <div class="card-header">
       <div class="card-header-title wrapper" style="padding-bottom:1px">
@@ -14,7 +14,7 @@
       </div>
       <div class="content">
         <strong> Category: </strong>
-          <span class="js-idea-category"> <%= idea.category.name %> </span>
+        <span class="js-idea-category"> <%= idea.category.name %> </span>
       </div>
       <div class="content">
        <strong> In need: </strong>
@@ -32,8 +32,7 @@
             <div class="level-item" style="margin-right:50px">
               <div class="">
                 <div class="control new-join" style="vertical-align: middle;">
-                  <a class="button is-primary modal-join js-modal-join" data-target="modal-join" >Join</a>
-                  <%#= render "joins/new", idea: @idea %>
+                  <a class="button is-primary modal-join js-modal-join-idea" data-target="modal" >Join</a>
                 </div>
               </div>
             <div>
@@ -41,6 +40,7 @@
         </nav>
       </div>
     </div>
+    <%= render "participates/new", idea: idea %>
     <div class="card-image">
       <figure class="image image-idea is-4by3">
         <% if idea.idea_attachments.first %>
@@ -78,7 +78,7 @@
     </div>
     <div class="media-content">
       <p class="title is-4">
-        <%= link_to idea.user.name,""  %>
+        <%= link_to idea.user.name_or_email,""  %>
       </p>
       <p class="subtitle is-6">
         <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>

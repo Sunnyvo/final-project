@@ -1,0 +1,51 @@
+<div class="modal js-modal-join">
+  <div class="js-modal-background-join modal-background"></div>
+
+  <div class="modal-content content-new">
+    <h3 style="text-align: center; padding-top:15px; padding-bottom:30px; background-color:#343d46;color:white ">Hello <%=current_user.name_or_email%> , We hope you will enjoy our Idea </h3>
+    <%= form_for @participate, remote: true do |f| %>
+      <div class="control" style="margin:30px; margin-top:1px">
+        <div class="wrapper" >
+          <figure class="image image-round is-96x96">
+            <%= image_tag(current_user.image_url_or_default, alt: "image") %>
+          </figure>
+        </div>
+        <label class="label" style="margin-left:10px"> <h4>Our idea: </h4> </label>
+        <div style="padding-left:40px;">
+          <p>
+            <strong> Member: </strong>
+            <span class="js-num-member"> <%= idea.joiners.map{|joiner| joiner.name_or_email}.join(",") %> </span>
+          </p>
+          <p>
+            <strong> Progress of idea: </strong>
+            <span class="js-progress"> From begining</span>
+          </p>
+          <p>
+            <strong> In need: </strong>
+            <span class="js-progress"><%= idea.need %></span>
+          </p>
+        </div>
+
+        <label class="label" style="margin:10px"> <h4> Something about you:  </h4></label>
+        <div style="padding-left:40px;">
+          <label class="label" >Your skills: </label>
+          <%= f.text_field :skills, class: "form-control input need-input"%> </span>
+          <%= f.text_area :details, class: "form-control textarea body-textarea", placeholder: "why do you wanna join this idea...", style: "margin-top:20px" %>
+          <%= f.hidden_field  :idea_id, value: idea.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        </div>
+
+        <div class="control", style="padding:5px; margin-top:20px">
+          <div class="level">
+            <div class="level-left">
+            </div>
+            <div class="level-right">
+              <%= f.submit "Send", class: "button is-primary js-send", style: "margin-right:30px" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button class="modal-close js-modal-close-join is-large" aria-label="close"></button>
+</div>
