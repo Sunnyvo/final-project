@@ -13,6 +13,7 @@
   border-radius: 10px;
 }
 .card-show-idea{
+
   margin-top:40px;
   margin-left:100px;
   margin-right:100px;
@@ -27,8 +28,10 @@
 }
 
 .js-idea:hover {
+
   .image-idea{
   display: none;
+
   }
   .card-content{
     display: block;
@@ -44,9 +47,8 @@
 
 
 .idea-info{
-  min-height:280px;
+  height:280px;
   background-color:white;
-  border: 1px solid #343d46;
   border-radius: 15px;
 }
 

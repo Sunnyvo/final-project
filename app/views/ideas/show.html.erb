@@ -2,10 +2,9 @@
 
 <div class="content">
   <nav class="parent">
-    <h1>Hello Sunny Vo</h1>
   </nav>
-  <div class="columns child is-multiline is-mobile">
-    <div class="column is-two-thirds">
+  <div class="columns child is-multiline is-mobile" style="background-color:lightgray">
+    <div class="column is-two-thirds" style="padding:50px">
       <div class="media name-hover">
         <div class="media-left">
           <figure class="image image-round is-96x96">
@@ -23,26 +22,21 @@
       </div>
 
       <div class="">
-        <div class="idea-info">
-
+        <div class="idea-info" style="padding:20px">
+        <%= @idea.body %>
         </div>
-        <div class="card-image">
-            <figure class="image image-idea is-4by3">
-              <% if idea.idea_attachments.first %>
-                <%= image_tag(idea.idea_attachments.first.photo.url, class: "card-image ") %>
-              <% else %>
-                <%= image_tag("idea.jpg", class: "card-image")%>
-              <% end %>
-            </figure>
-          </div>
+        <div style="margin-top:30px">
+          <% if @idea.idea_attachments.first %>
+            <%= image_tag(@idea.idea_attachments.first.photo.url, class: "",style: "height:300px;width:400px") %>
+          <% else %>
+            <%= image_tag("idea.jpg", class: "", style: "height:300px;width:400px")%>
+          <% end %>
+        </div>
       </div>
       </div>
-    <div class="column">
-      second column
+    <div class="column" >
+
     </div>
   </div>
 </div>
 
-
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>

@@ -88,8 +88,18 @@ body {
 }
 
 .parent{
-  height: 130px;
+  height: 140px;
   background-color: Gray;
+  padding-left:40px;
+  padding-right: 160px;
+  .image{
+    margin-top: 14px;
+  }
+  .title{
+    padding-top: 50px;
+    text-align: center;
+    color: white;
+  }
 }
 
 .child{

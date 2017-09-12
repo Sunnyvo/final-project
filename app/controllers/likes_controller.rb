@@ -3,8 +3,8 @@ class LikesController < ApplicationController
   def toggle
     if params[:idea_id]
       @item = Idea.find params[:idea_id]
-    # elsif params[:comment_id]
-    #   @item = Comment.find(params[:comment_id])
+     elsif params[:comment_id]
+      @item = Comment.find(params[:comment_id])
     end
     current_user.toggle_like!(@item)
 
