@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912034926) do
+ActiveRecord::Schema.define(version: 20170912040405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170912034926) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "idea_id"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -62,6 +71,15 @@ ActiveRecord::Schema.define(version: 20170912034926) do
     t.index ["category_id"], name: "index_ideas_on_category_id"
     t.index ["type_id"], name: "index_ideas_on_type_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "item_id"
+    t.string "item_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "participates", force: :cascade do |t|
@@ -116,6 +134,7 @@ ActiveRecord::Schema.define(version: 20170912034926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "hashtags_ideas", "hashtags"
   add_foreign_key "hashtags_ideas", "ideas"
@@ -123,6 +142,7 @@ ActiveRecord::Schema.define(version: 20170912034926) do
   add_foreign_key "ideas", "categories"
   add_foreign_key "ideas", "types"
   add_foreign_key "ideas", "users"
+  add_foreign_key "likes", "users"
   add_foreign_key "participates", "ideas"
   add_foreign_key "reaches", "ideas"
   add_foreign_key "reaches", "users"

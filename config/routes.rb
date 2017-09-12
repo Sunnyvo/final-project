@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "profile" => "users#show"
   get "profile"   => "users#profile"
 
+  resources :reaches
+
   #home page
   root "home#index"
   get "text" => "home#text"

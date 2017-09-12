@@ -1,0 +1,24 @@
+class ReachesController < ApplicationController
+  def new
+    @reach = Reach.new
+  end
+  def create
+    puts reach_params
+    reach = current_user.reaches.build reach_params
+    puts params[:idea_id]
+    unless current_user.reaches.where!(idea_id: params[:idea_id]).count
+      if reach.save
+      # respond_to do |f|
+         f.html{ redirect_back(fallback_location: root_path) }
+      #   f.js { render 'reach' }
+      else
+        flash[:error] = "Error: #{reach.errors.full_messages.to_sentence}"
+      end
+    end
+  end
+
+  private
+  def reach_params
+    params.require(:reach).permit(:idea_id)
+  end
+end
