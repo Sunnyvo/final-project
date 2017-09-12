@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :reaches
 
+  #like
+  post "toggle_like" => "likes#toggle"
+
+
   #home page
   root "home#index"
   get "text" => "home#text"

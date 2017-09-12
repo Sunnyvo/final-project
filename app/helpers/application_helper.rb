@@ -1,6 +1,6 @@
 module ApplicationHelper
   def icon(icon_name, text)
-    content_tag(:span, fa_icon(icon_name), class: "icon") + content_tag(:span, text)
+    content_tag(:span, fa_icon(icon_name), class: "icon") + content_tag(:span, text,class: "text-icon")
   end
   def flash_messages(opts = {})
     flash.map do |msg_type, message|

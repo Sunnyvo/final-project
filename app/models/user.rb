@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows
   has_many :participates
+  has_many :likes, dependent: :destroy
   # has_many :joined_ideas, through: :participates, source: 'idea'
   has_many :joined_ideas, through: :participates, source: 'joined_idea'
   has_many :reaches
@@ -59,5 +60,17 @@ class User < ApplicationRecord
 
   def name_or_email
     name || email
+  end
+
+  def liking?(item)
+    likes.where(item: item).exists?
+  end
+
+  def toggle_like!(item)
+    if like = likes.where(item: item).first
+      like.destroy
+    else
+      likes.where(item: item).create!
+    end
   end
 end

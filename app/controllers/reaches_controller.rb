@@ -4,12 +4,13 @@ class ReachesController < ApplicationController
   end
   def create
     puts reach_params
-    reach = current_user.reaches.build reach_params
-    puts params[:idea_id]
-    unless current_user.reaches.where!(idea_id: params[:idea_id]).count
+    if current_user.reaches.where(idea_id: params[:reach][:idea_id]).count == 0
+      reach = current_user.reaches.build reach_params
+      puts params[:idea_id]
+
       if reach.save
-      # respond_to do |f|
-         f.html{ redirect_back(fallback_location: root_path) }
+      #  respond_to do |f|
+      #    f.html{ redirect_back(fallback_location: root_path) }
       #   f.js { render 'reach' }
       else
         flash[:error] = "Error: #{reach.errors.full_messages.to_sentence}"

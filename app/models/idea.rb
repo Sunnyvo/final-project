@@ -8,7 +8,7 @@ class Idea < ApplicationRecord
   has_many :joiners, through: :participates, source: "joiner"
   has_many :reaches
   has_and_belongs_to_many :hashtags
-
+  has_many :likes, as: :item
   after_create do
     puts "after created!"
     idea = Idea.find_by(id: self.id)

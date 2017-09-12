@@ -64,7 +64,7 @@
           <div class="level-item">
             <%#= link_to icon("heart-o","25"), toggle_like_path(idea_id: idea.id),
             class: "button is-white js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
-            <%= link_to icon("heart-o","102") %>
+            <%= link_to icon("heart-o","#{idea.likes.count}"),toggle_like_path(idea_id: idea.id), class: "js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
           </div>
         </div>
       </nav>

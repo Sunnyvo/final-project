@@ -89,13 +89,11 @@ body {
 
 .parent{
   height: 130px;
-  border: 1px solid #343d46;;
-  color: #0074d9;
+  background-color: Gray;
 }
 
 .child{
-  border: 1px solid;
-  border-radius: 10px;
+  // border-radius: 10px;
   background-color: #eee;
   padding: 20px;
   min-height: 1000px;

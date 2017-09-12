@@ -1,0 +1,4 @@
+$("#<%= dom_id @item %>").find(".js-like-button").first().toggleClass("is-liked");
+
+  $("#<%= dom_id @item %>").find(".js-like-button .text-icon").text("<%=@item.likes.count%>")
+
