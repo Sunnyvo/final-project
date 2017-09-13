@@ -43,7 +43,6 @@
           <%= render "comments/comment", cmt: cmt %>
         <% end %>
       </div>
-      <div class="fb-comments" data-href="http://localhost:3000/ideas/<%= @idea.id %>" data-numposts="5"></div>
     </div>
     <div class="column" style="padding-top:170px">
       <div class="level" id="<%=dom_id @idea%>">
@@ -87,15 +86,18 @@
           </p>
           <p>
             <strong> Hash tag: </strong>
-            <% @idea.hashtags.each  do |hash| %>
-              <p class="js-num-member">
-                <%= hash.name %>
-              </p>
-            <% end %>
+            <p>
+              <% @idea.hashtags.each  do |hash| %>
+                <span class="js-num-member" style="margin-left:20px">
+                  <%= hash.name %>
+                </span>
+              <% end %>
             </p>
+          </p>
         </div>
     </div>
   </div>
+  <div class="fb-comments" data-href="http://localhost:3000/ideas/<%= @idea.id %>" data-numposts="5"></div>
 </div>
 
 

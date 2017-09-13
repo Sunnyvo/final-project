@@ -67,6 +67,11 @@ class User < ApplicationRecord
     likes.where(item: item).exists?
   end
 
+  def reaching?(idea)
+    reaches.where(idea: idea).exists?
+  end
+
+
   def toggle_like!(item)
     if like = likes.where(item: item).first
       like.destroy

@@ -11,6 +11,13 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @comment = Comment.new
+    if current_user.reaches.where(idea_id: @idea.id).count == 0
+      reach = current_user.reaches.build idea: @idea
+      if reach.save
+      else
+        flash[:error] = "Error: #{reach.errors.full_messages.to_sentence}"
+      end
+    end
   end
 
   # GET /ideas/new
@@ -33,7 +40,7 @@ class IdeasController < ApplicationController
           @idea_attachment = @idea.idea_attachments.create!(photo: a)
         end
       end
-
+      current_user.reaches.create idea: @idea
       respond_to do |f|
         f.html{ redirect_back(fallback_location: root_path) }
         f.js { render 'idea' }

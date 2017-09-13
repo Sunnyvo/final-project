@@ -1,5 +1,5 @@
 <div class="card-show-idea" id="<%= dom_id idea %>">
-  <div class="card js-idea" id="<%= dom_id idea %>">
+  <div class="card js-idea <%="#{'js-idea-reach' unless current_user.reaching?(idea)}"%>" id="<%= dom_id idea %>">
     <div class="card-header">
       <div class="card-header-title wrapper" style="padding-bottom:1px">
         <%= link_to "#{idea.title}", idea_path(idea.id)  %>
@@ -55,11 +55,11 @@
         <div class="level-left">
         </div>
         <div class="level-right">
-          <div class="level-item">
-            <%= icon("eye-slash", "#{idea.reaches.count}") %>
+          <div class="level-item js-reach-num" >
+            <%= icon("eye-slash", "#{idea.reaches.count}")  %>
           </div>
-          <div class="level-item">
-            <%= icon("comments", "22") %>
+          <div class="level-item js-cmt-num">
+            <%= icon("comments", "#{idea.comments.count}")%>
           </div>
           <div class="level-item">
             <%= link_to icon("heart-o","#{idea.likes.count}"),toggle_like_path(idea_id: idea.id), class: "js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
