@@ -33,10 +33,69 @@
           <% end %>
         </div>
       </div>
+      <div class="fb-share-button" data-href="http://localhost:3000/ideas/<%= @idea.id %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share on FB</a></div>
+      <lable> <h3 style="margin-top:20px;"> Add a new comment <h3> </lable>
+      <div class="new-comment">
+        <%= render "comments/new", idea: @idea %>
       </div>
-    <div class="column" >
+      <div class="comments-list">
+        <% @idea.comments.each do |cmt| %>
+          <%= render "comments/comment", cmt: cmt %>
+        <% end %>
+      </div>
+      <div class="fb-comments" data-href="http://localhost:3000/ideas/<%= @idea.id %>" data-numposts="5"></div>
+    </div>
+    <div class="column" style="padding-top:170px">
+      <div class="level" id="<%=dom_id @idea%>">
+        <div class="level-left">
+          <div class="level-item">
+           <%= link_to icon("heart-o","#{@idea.likes.count}"),toggle_like_path(idea_id: @idea.id), class: "js-like-button #{'is-liked' if current_user.liking?(@idea)}", method: "post", remote: true %>
+          </div>
+          <div class="level-item">
+          Likes
+          </div>
+        </div>
+        <div class"level-right">
+        </div>
+      </div>
+      <div class="control" style=" margin-top:200px">
+        <div>
+          <p>
+            <strong> Member: </strong>
+            <% @idea.joiners.each  do |joiner| %>
+              <p class="js-num-member">
+                <%= joiner.name %>
+              </p>
+            <% end %>
+          </p>
+          <p>
+            <strong> Progress of idea: </strong>
+            <span class=""> From begining</span>
+          </p>
+          <p>
+            <strong> In need: </strong>
+            <p class=""><%= @idea.need %></p>
+          </p>
+          <p>
+            <strong> Demo: </strong>
+            <a hef="https://www.youtube.com/watch?v=io9iEy00vQo" class=""> Youtube</a>
+          </p>
 
+          <p>
+            <strong> TODO lists: </strong>
+            <a hef="https://trello.com/b/18A0VGdG/br1-final-projects" class=""> Trello</a>
+          </p>
+          <p>
+            <strong> Hash tag: </strong>
+            <% @idea.hashtags.each  do |hash| %>
+              <p class="js-num-member">
+                <%= hash.name %>
+              </p>
+            <% end %>
+            </p>
+        </div>
     </div>
   </div>
 </div>
+
 

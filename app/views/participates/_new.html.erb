@@ -1,6 +1,5 @@
 <div class="modal js-modal-join">
   <div class="js-modal-background-join modal-background"></div>
-
   <div class="modal-content content-new">
     <h3 style="text-align: center; padding-top:15px; padding-bottom:30px; background-color:#343d46;color:white ">Hello <%=current_user.name_or_email%> , We hope you will enjoy our Idea </h3>
     <%= form_for @participate, remote: true do |f| %>

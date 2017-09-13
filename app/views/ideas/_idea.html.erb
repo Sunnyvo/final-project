@@ -1,9 +1,8 @@
 <div class="card-show-idea" id="<%= dom_id idea %>">
   <div class="card js-idea" id="<%= dom_id idea %>">
-
     <div class="card-header">
       <div class="card-header-title wrapper" style="padding-bottom:1px">
-        <h3><strong>  <%= simple_format idea.title %> </strong></h3>
+        <%= link_to "#{idea.title}", idea_path(idea.id)  %>
       </div>
     </div>
     <div class="card-content"  style="min-height:469px;">
@@ -32,7 +31,9 @@
             <div class="level-item" style="margin-right:50px">
               <div class="">
                 <div class="control new-join" style="vertical-align: middle;">
-                  <a class="button is-primary modal-join js-modal-join-idea" data-target="modal" >Join</a>
+                  <% unless idea.user==current_user|| current_user.joined_ideas.include?(idea) %>
+                    <a class="button is-primary modal-join js-modal-join-idea" data-target="modal" >Join</a>
+                  <% end %>
                 </div>
               </div>
             <div>
@@ -40,7 +41,6 @@
         </nav>
       </div>
     </div>
-    <%= render "participates/new", idea: idea %>
     <div class="card-image">
       <figure class="image image-idea is-4by3">
         <% if idea.idea_attachments.first %>
@@ -62,8 +62,6 @@
             <%= icon("comments", "22") %>
           </div>
           <div class="level-item">
-            <%#= link_to icon("heart-o","25"), toggle_like_path(idea_id: idea.id),
-            class: "button is-white js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
             <%= link_to icon("heart-o","#{idea.likes.count}"),toggle_like_path(idea_id: idea.id), class: "js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
           </div>
         </div>
@@ -84,5 +82,6 @@
         <small><%= time_ago_in_words idea.idea_updated_at %> ago</small>
       </p>
     </div>
+    <%= render "participates/new", idea: idea %>
   </div>
 </div>

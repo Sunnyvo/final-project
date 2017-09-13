@@ -1,0 +1,30 @@
+<div class="comment card-content" id ="<%= dom_id cmt %>" style="border-bottom: 1px solid #343d46;">
+  <div class="media name-hover">
+    <div class="media-left">
+      <figure class="image image-round is-64x64">
+        <%= image_tag(cmt.user.image_url_or_default, alt: "image")%>
+      </figure>
+    </div>
+    <div class="media-content">
+      <p class="title is-5" style="padding-top:10px;">
+        <%= link_to cmt.user.name_or_email %>
+      </p>
+      <p class="subtitle is-4">
+        <%= cmt.body %>
+      </p>
+    </div>
+  </div>
+
+  <div class="level" style="margin-top:10px">
+    <div class="level-left">
+      <div class="level-item">
+        <small style="margin-left:100px">  <%= time_ago_in_words cmt.updated_at %> </small>
+      </div>
+    </div>
+    <div class"level-right">
+      <div class="level-item">
+        <%= link_to icon("heart-o","#{cmt.likes.count}"),toggle_like_path(comment_id: cmt.id), class: "js-like-button #{'is-liked' if current_user.liking?(cmt)}", method: "post", remote: true %>
+      </div>
+    </div>
+  </div>
+</div>

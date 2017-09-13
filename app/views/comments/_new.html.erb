@@ -1,0 +1,6 @@
+ <%= form_for @comment, remote: true, html: {autocomplete: "off"} do |f| %>
+  <p>
+    <%= f.hidden_field :idea_id, value: idea.id  %>
+    <%= f.text_field :body, :placeholder => "We really need your feedback", class: "input", style: "border-radius:10px;" %>
+  </p>
+<% end %>

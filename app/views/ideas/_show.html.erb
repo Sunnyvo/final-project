@@ -19,6 +19,24 @@
           </p>
         </div>
       </div>
+      <div class="card-footer footer-like">
+        <%= display_likers(@idea) %>
+      </div>
+      <div class="media">
+        <div class="media-left">
+          <p class="image is-32x32">
+            <%= image_tag(current_user.image_url_or_default, class: "card-image") %>
+          </p>
+        </div>
+        <div class="media-content new-comment", id="<%=dom_id idea %>">
+          <%= render "comments/new", idea: @idea %>
+        </div>
+      </div>
+      <div class="comments-list" id="<%=dom_id @idea %>">
+        <% @idea.comments.each do |cmt| %>
+          <%= render "comments/comment", cmt: cmt %>
+        <% end %>
+      </div>
     </div>
     <div class="column">
       second column

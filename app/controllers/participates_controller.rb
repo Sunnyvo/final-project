@@ -7,10 +7,10 @@ class ParticipatesController < ApplicationController
     puts "hey1"
     if @participate.save
       puts "hey2"
-      respond_to do |f|
-        f.html{ redirect_back(fallback_location: root_path) }
-        f.js { render 'participate' }
-      end
+      # respond_to do |f|
+      #   f.html{ redirect_back(fallback_location: root_path) }
+      #   f.js { render 'participate' }
+      # end
 
     else
       flash[:error] = "Error: #{@participate.errors.full_messages.to_sentence}"

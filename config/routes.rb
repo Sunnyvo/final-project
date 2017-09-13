@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :reaches
 
+  resources :comments
+
   #like
   post "toggle_like" => "likes#toggle"
 

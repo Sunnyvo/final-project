@@ -9,6 +9,8 @@ class Idea < ApplicationRecord
   has_many :reaches
   has_and_belongs_to_many :hashtags
   has_many :likes, as: :item
+  has_many :comments, dependent: :destroy
+  validates :body,:title, presence: true
   after_create do
     puts "after created!"
     idea = Idea.find_by(id: self.id)

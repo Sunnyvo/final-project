@@ -5,7 +5,7 @@ $(document).on("turbolinks:load",()=> {
   $(".js-modal-new-idea").toggleClass('is-active');
   });
 
-  $('.js-modal-join-idea, .js-modal-background-join, .js-modal-close-join').on('click', event => {
+  $('.js-modal-join-idea,.js-send, .js-modal-background-join, .js-modal-close-join').on('click', event => {
     var id = $(event.target).parents(".card-show-idea").attr("id");
     $('#'+id).find('.js-modal-join').toggleClass('is-active');
   });
