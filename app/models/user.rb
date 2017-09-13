@@ -45,14 +45,24 @@ class User < ApplicationRecord
       hash = {}
       hash[:name] = person["name"]["first"] + " " + person["name"]["last"]
       hash[:email] = person["email"]
-      hash[:password] = person["login"]["password"]
+      o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
+      string = (0...10).map { o[rand(o.length)] }.join
+      hash[:password] = string
       hash[:image_url] = person["picture"]["large"]
       User.create! hash
     end
   end
 
   def self.num_followedby(user)
-    user.follows.count
+    Follow.where(follower: user).count
+  end
+
+  def self.num_ideas(user)
+    user.ideas.count
+  end
+
+  def self.num_joined_ideas(user)
+    user.joined_ideas.count
   end
 
   def is_followed?(user)
@@ -79,4 +89,9 @@ class User < ApplicationRecord
       likes.where(item: item).create!
     end
   end
+
+  def self.autocomplete(name)
+    User.where("name ILIKE ? ", "%#{name}%")
+  end
+
 end

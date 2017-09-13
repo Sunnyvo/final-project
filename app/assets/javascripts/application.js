@@ -14,4 +14,5 @@
 //= require rails-ujs
 //= require dropzone
 //= require turbolinks
+//= require js/jquery.easy-autocomplete
 //= require_tree .

@@ -80,6 +80,13 @@ class IdeasController < ApplicationController
     end
   end
 
+  def paging
+    @participate = Participate.new
+    params[:per] ||= 2
+    @ideas = Idea.order("updated_at DESC").page(params[:page]).per(params[:per])
+    render partial: "idea", collection: @ideas, layout: false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
@@ -87,7 +94,6 @@ class IdeasController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-  private
     def idea_params
       params.require(:idea).permit(:title,:need, :body,:category_id,:type_id,idea_attachments_attributes: [:id, :idea_id, :photo])
     end

@@ -1,5 +1,10 @@
 {
   "name": "community-idea",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
+  }
 }
