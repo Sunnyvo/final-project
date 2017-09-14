@@ -49,8 +49,10 @@ class User < ApplicationRecord
       string = (0...10).map { o[rand(o.length)] }.join
       hash[:password] = string
       hash[:image_url] = person["picture"]["large"]
-      User.create! hash
+      user = User.create! hash
     end
+
+
   end
 
   def self.num_followedby(user)
@@ -92,5 +94,8 @@ class User < ApplicationRecord
 
   def self.autocomplete(name)
     User.where("name ILIKE ? ", "%#{name}%")
+  end
+  def self.random_user
+    User.offset(rand User.count).first
   end
 end

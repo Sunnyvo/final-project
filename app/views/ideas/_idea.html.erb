@@ -43,11 +43,7 @@
     </div>
     <div class="card-image">
       <figure class="image image-idea is-4by3">
-        <% if idea.idea_attachments.first %>
-          <%= image_tag(idea.idea_attachments.first.photo.url, class: "card-image ") %>
-        <% else %>
-          <%= image_tag("idea.jpg", class: "card-image")%>
-        <% end %>
+          <%= image_tag(idea.image_url_or_photo, class: "card-image ") %>
       </figure>
     </div>
     <footer>
