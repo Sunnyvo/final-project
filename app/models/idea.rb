@@ -36,11 +36,26 @@ class Idea < ApplicationRecord
     user ||= User.last
     n.times do
       idea = idea.create(
+
         title: Faker::Cat.breed,
-        body: Faker::Hobbit.quote,
+        body: '#'+Faker::Job.field +  Faker::Hobbit.quote,
+        need: Faker::Job.title,
+        category_id: rand(1..5),
+        type_id: rand(1..3),
+
+
       )
     end
   end
 
+  def self.find_ideas_by_hashtag(hashtag)
+    hashtag = Hashtag.find_by(name: hashtag)
+    if hashtag!=nil
+      return hashtag.ideas
+    end
+  end
 
+  def image_url_or_photo
+    idea_attachments.url|| image_url.presence || "idea.jpg"
+  end
 end

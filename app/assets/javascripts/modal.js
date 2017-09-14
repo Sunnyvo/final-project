@@ -10,7 +10,6 @@ $(document).on("turbolinks:load",()=> {
     $('#'+id).find('.js-modal-join').toggleClass('is-active');
   });
 
-
   $('.js-post').on('click', event =>{
     $(".js-modal-new-idea").toggleClass('is-active');
     var title = $(".js-modal-new-idea").find(".title-input").val();

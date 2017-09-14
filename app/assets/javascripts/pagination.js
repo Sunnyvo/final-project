@@ -1,5 +1,9 @@
 $(document).on("turbolinks:load", setupInfiniteScroll)
+
 function setupInfiniteScroll(e) {
+a = window.location.href.match(/^.*\//);
+b =  window.location.href;
+if(a==b){
 const THRESHOLD = 300;
   const $paginationElem = $('.pagination');
   const $window = $(window);
@@ -39,7 +43,7 @@ const THRESHOLD = 300;
     }
   }, 1000));
 }
-
+}
 
 function debounce(func, wait, immediate) {
     var timeout;

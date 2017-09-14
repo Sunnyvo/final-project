@@ -93,5 +93,4 @@ class User < ApplicationRecord
   def self.autocomplete(name)
     User.where("name ILIKE ? ", "%#{name}%")
   end
-
 end

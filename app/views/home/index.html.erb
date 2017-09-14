@@ -39,9 +39,11 @@
             <%= render "ideas/idea", idea: idea %>
           <% end %>
         </div>
+        <% unless  params[:sort_by] == "champion"%>
         <div class="pagination" data-pagination-endpoint="<%= paging_ideas_path %>" data-pagination-pages="<%= @ideas.total_pages %>">
           <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin: auto"></i>
         </div>
+        <% end %>
       <% end %>
     </div>
     <div class="column" style="background-color:lightgray;">
