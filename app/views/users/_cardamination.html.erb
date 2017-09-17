@@ -1,6 +1,6 @@
  <aside class="profile-card css-profile" id="<%=dom_id user%>">
   <header>
-    <%= link_to profile_path(id: user) do %>
+    <%= link_to user_path(id: user) do %>
       <%= image_tag user.image_url_or_default%>
     <% end %>
     <h1 class="title is-4"><%= user.name %></h1>

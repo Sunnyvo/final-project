@@ -28,11 +28,15 @@
           <%= link_to icon("facebook", "Facebook"), user_facebook_omniauth_authorize_path, class: "button is-info", style: "min-width: 150px" %>
         </div>
       <% else %>
-        <div class="">
-          <div class="control new-idea" style="vertical-align: middle;">
-            <a class="button is-primary is-large modal-button wrapper js-modal-button-new-idea" data-target="modal" >New idea</a>
+        <div class="control wrapper">
+          <span class=" new-idea" style="">
+            <%= link_to "Find awesome ideas", ideas_path(:sort_by => "love"), class: "button is-primary  is-large awesome-btn" %>
+          </span>
+          <span class=" new-idea " style="">
+            <a class="button is-primary is-large modal-button  js-modal-button-new-idea" data-target="modal" >New idea</a>
             <%= render "ideas/new" %>
-          </div>
+          </span>
+
         </div>
         <div class="ideas-list">
           <% @ideas.each do |idea| %>

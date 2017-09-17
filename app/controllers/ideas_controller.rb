@@ -4,7 +4,18 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.order('updated_at DESC')
+    @idea = Idea.new
+    @idea_attachment = @idea.idea_attachments.build
+    @participate = Participate.new
+    if params[:sort_by] =="view"
+      @ideas = Idea.joins(:reaches).select("ideas.*, count(reaches.id) as reach_count").group("ideas.id").order("reach_count DESC").page(1).per(2)
+    elsif params[:sort_by] =="comment"
+      @ideas =  Idea.joins(:comments).select("ideas.*,count(comments.id) as comment_count").group("ideas.id").order("comment_count DESC").page(1).per(2)
+    elsif params[:sort_by] =="join"
+      @ideas =  Idea.joins(:participates).select("ideas.*,count(participates.id) as participate_count").group("ideas.id").order("participate_count DESC").page(1).per(2)
+    else
+      @ideas =  Idea.joins(:likes).select("ideas.*,count(likes.id) as like_count").group("ideas.id").order("like_count DESC").page(1).per(2)
+    end
   end
 
   # GET /ideas/1

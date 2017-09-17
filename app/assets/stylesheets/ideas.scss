@@ -35,6 +35,7 @@
   }
   .card-content{
     display: block;
+
   }
 
 }
@@ -42,6 +43,8 @@
 .js-idea {
   .card-content{
     display: none;
+    transition-delay:5s display;
+
   }
 }
 

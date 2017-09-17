@@ -1,0 +1,47 @@
+<div class="content">
+  <nav class="parent" style="">
+      <div class="media name-hover">
+        <div class="media-left">
+          <figure class="image image-round is-96x96">
+             <%= image_tag "mellon2.jpg" %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <h1 class="title is-4" style="">
+            Welcome to Mellon Generation
+          </h1>
+        </div>
+      </div>
+  </nav>
+  <div class="columns  is-multiline is-mobile ">
+    <div class="column is-2" style="background-color:lightgray;">
+    </div>
+    <div class="column child is-8" >
+      <div class="control wrapper">
+        <span class="" style="">
+          <%= link_to "Joiners", ideas_path(:sort_by => "join"), class: "button is-primary  is-large filter-btn" %>
+        </span>
+        <span class="" style="">
+          <%= link_to "Views", ideas_path(:sort_by => "view"), class: "button is-primary  is-large filter-btn" %>
+        </span>
+        <span class="" style="">
+          <%= link_to "Loves", ideas_path(:sort_by => "love"), class: "button is-primary  is-large filter-btn" %>
+        </span>
+        <span class="" style="">
+          <%= link_to "Comments", ideas_path(:sort_by => "comment"), class: "button is-primary  is-large filter-btn" %>
+        </span>
+      </div>
+      <div class="ideas-list">
+        <% @ideas.each do |idea| %>
+          <%= render "ideas/idea", idea: idea %>
+        <% end %>
+      </div>
+      <div class="pagination" data-pagination-endpoint="<%= paging_ideas_path %>" data-pagination-pages="<%= @ideas.total_pages %>">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin: auto"></i>
+      </div>
+    </div>
+    <div class="column" style="background-color:lightgray;">
+
+    </div>
+  </div>
+</div>

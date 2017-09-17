@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   delete "unfollow" => "follows#destroy"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  get "profile" => "users#show"
-  get "profile"   => "users#profile"
-  get "profiles" => "users#profiles"
+  # get "profile" => "users#show"
+  # get "profile"   => "users#show"
+  get "searchresult" => "users#searchresult"
   resources :users do
     collection do
       get 'search'

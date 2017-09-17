@@ -22,9 +22,18 @@
           <%= render "cardamination", user: stranger  %>
         <% end %>
       </div>
-    </div>
-    <div class="column" style="background-color:lightgray;">
-
+      <h1> Ideas: </h1>
+      <div class="columns is-multiline friends-list" style="background-color:#87CEFA;">
+        <% if @ideas %>
+          <% @ideas.each do |idea| %>
+            <%= render "ideas/ideapf", idea: idea  %>
+          <% end %>
+        <% else %>
+          <p>
+            No ideas to show
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

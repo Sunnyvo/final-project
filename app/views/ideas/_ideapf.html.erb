@@ -1,0 +1,68 @@
+<div class="card-show-idea" id="<%= dom_id idea %>" style="min-width:620px;min-height:620px">
+  <div class="card js-idea <%="#{'js-idea-reach' unless current_user.reaching?(idea)}"%>" id="<%= dom_id idea %>">
+    <div class="card-header">
+      <div class="card-header-title wrapper" style="padding-bottom:1px">
+        <%= link_to "#{idea.title}", idea_path(idea.id)  %>
+      </div>
+    </div>
+    <div class="card-content"  style="min-height:469px;">
+      <div class="content" >
+        <div class="body" style="border: 1px solid #bbbbbb;min-height:200px;border-radius: 10px; padding:20px">
+          <%= simple_format idea.body %>
+        </div>
+      </div>
+      <div class="content">
+        <strong> Category: </strong>
+        <span class="js-idea-category"> <%= idea.category.name %> </span>
+      </div>
+      <div class="content">
+       <strong> In need: </strong>
+        <span class="js-idea-need"> <%= idea.need %> </span>
+      </div>
+      <div class="content">
+        <strong><%= idea.joiners.count %></strong>
+        want to join this idea
+      </div>
+      <div class="content">
+        <nav class="level">
+          <div class="level-left">
+          </div>
+          <div class="level-right">
+            <div class="level-item" style="margin-right:50px">
+              <div class="">
+                <div class="control new-join" style="vertical-align: middle;">
+                  <% unless idea.user==current_user|| current_user.joined_ideas.include?(idea) %>
+                    <a class="button is-primary modal-join js-modal-join-idea" data-target="modal" >Join</a>
+                  <% end %>
+                </div>
+              </div>
+            <div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="card-image">
+      <figure class="image image-idea is-4by3">
+          <%= image_tag(idea.image_url_or_photo, class: "card-image ") %>
+      </figure>
+    </div>
+    <footer>
+      <nav class="level" style="margin-right:10px">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+          <div class="level-item js-reach-num" >
+            <%= icon("eye-slash", "#{idea.reaches.count}")  %>
+          </div>
+          <div class="level-item js-cmt-num">
+            <%= icon("comments", "#{idea.comments.count}")%>
+          </div>
+          <div class="level-item">
+            <%= link_to icon("heart-o","#{idea.likes.count}"),toggle_like_path(idea_id: idea.id), class: "js-like-button #{'is-liked' if current_user.liking?(idea)}", method: "post", remote: true %>
+          </div>
+        </div>
+      </nav>
+    </footer>
+  </div>
+  <%= render "participates/new", idea: idea %>
+</div>

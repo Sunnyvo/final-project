@@ -36,6 +36,7 @@ class Idea < ApplicationRecord
 
     user ||= User.last
     n.times do
+        a=''
         b = nil
         loop do
           b = Behance::Client.new(access_token: ENV.fetch('API_BEHANCE_KEY')).collections.first["latest_projects"].first["covers"]
@@ -44,15 +45,33 @@ class Idea < ApplicationRecord
           end
           break if b !=nil
         end
+        hashtag_idea = '#'+Faker::Job.field
+        body_idea = ' '+ Faker::Hobbit.quote
         idea = Idea.create!(
         title: Faker::Cat.breed,
-        body: '#'+Faker::Job.field +  Faker::Hobbit.quote,
+        body: hashtag_idea +  body_idea,
         need: Faker::Job.title,
         image_url: a,
         category_id: rand(1..5),
         type_id: rand(1..3),
         user: User.random_user,
       )
+       rand(8).times do
+         idea.comments.create(
+           body: Faker::Hacker.say_something_smart,
+           user: User.random_user,
+         )
+       end
+       rand(30).times do
+         idea.likes.create(
+           user: User.random_user,
+         )
+       end
+       rand(30).times do
+         idea.participates.create(
+           skills: "abc", details: "xyz", joiner: User.random_user
+           )
+       end
     end
   end
 

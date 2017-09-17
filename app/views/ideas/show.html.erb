@@ -16,7 +16,7 @@
             <%= link_to @idea.title %>
           </p>
           <p class="subtitle is-6">
-            <small> by <strong><%= @idea.user.name_or_email%> </strong>  <%=  time_ago_in_words @idea.idea_updated_at %> ago</small>
+            <small> by <strong><%= link_to @idea.user.name_or_email,user_path(@idea.user.id)  %> </strong>  <%=  time_ago_in_words @idea.idea_updated_at %> ago</small>
           </p>
         </div>
       </div>
@@ -29,7 +29,7 @@
             <%= image_tag(@idea.image_url_or_photo, class: "",style: "height:300px;width:400px") %>
         </div>
       </div>
-      <div class="fb-share-button" data-href="https://stark-springs-76694.herokuapp.com/<%= @idea.id %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share on FB</a></div>
+      <div class="fb-share-button" data-href="http://localhost:3000/ideas/<%= @idea.id %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share on FB</a></div>
       <lable> <h3 style="margin-top:20px;"> Add a new comment <h3> </lable>
       <div class="new-comment">
         <%= render "comments/new", idea: @idea %>
@@ -55,32 +55,28 @@
       </div>
       <div class="control" style=" margin-top:200px">
         <div>
-          <p>
-            <strong> Member: </strong>
-            <% @idea.joiners.each  do |joiner| %>
-              <p class="js-num-member">
+          <p style="margin-top:30px">
+            <strong> Member(<%= @idea.joiners.count %>): </strong>
+            <% @idea.joiners.limit(4).each  do |joiner| %>
+              <p class="js-num-member" style="margin-left:20px">
                 <%= joiner.name %>
               </p>
             <% end %>
           </p>
           <p>
-            <strong> Progress of idea: </strong>
-            <span class=""> From begining</span>
-          </p>
-          <p>
             <strong> In need: </strong>
-            <p class=""><%= @idea.need %></p>
+            <p class="" style="margin-left:20px"><%= @idea.need %></p>
           </p>
-          <p>
+          <p style="margin-top:30px">
             <strong> Demo: </strong>
             <a hef="https://www.youtube.com/watch?v=io9iEy00vQo" class=""> Youtube</a>
           </p>
 
-          <p>
+          <p style="margin-top:30px">
             <strong> TODO lists: </strong>
             <a hef="https://trello.com/b/18A0VGdG/br1-final-projects" class=""> Trello</a>
           </p>
-          <p>
+          <p style="margin-top:50px">
             <strong> Hash tag: </strong>
             <p>
               <% @idea.hashtags.each  do |hash| %>
@@ -93,7 +89,7 @@
         </div>
     </div>
   </div>
-  <div class="fb-comments" data-href="https://stark-springs-76694.herokuapp.com/<%= @idea.id %>" data-numposts="5"></div>
+  <div class="fb-comments" data-href="http://localhost:3000/ideas/<%= @idea.id %>" data-numposts="5"></div>
 </div>
 
 
